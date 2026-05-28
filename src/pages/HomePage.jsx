@@ -1,3 +1,7 @@
+import GameCard from "../components/GameCard";
+
+
+
 function HomePage() {
   const games = [
     {
@@ -5,18 +9,24 @@ function HomePage() {
       title: "Cyberpunk 2077",
       genre: "RPG",
       status: "Playing",
+      rating: 5,
+      description: "..."
     },
     {
       id: 2,
       title: "Elden Ring",
       genre: "Soulslike",
       status: "Completed",
+      rating: 5,
+      description: "..."
     },
     {
       id: 3,
       title: "Hollow Knight",
       genre: "Metroidvania",
       status: "Wishlist",
+      rating: 5,
+      description: "..."
     },
   ];
 
@@ -34,29 +44,19 @@ function HomePage() {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        
         {games.map((game) => (
-          <div
-            key={game.id}
-            className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-lg transition hover:-translate-y-1 hover:border-violet-500"
-          >
-            <div className="mb-4 h-48 rounded-xl bg-slate-800"></div>
-
-            <h2 className="text-2xl font-semibold">
-              {game.title}
-            </h2>
-
-            <p className="mt-2 text-slate-400">
-              {game.genre}
-            </p>
-
-            <span className="mt-4 inline-block rounded-full bg-violet-500/20 px-3 py-1 text-sm text-violet-300">
-              {game.status}
-            </span>
-          </div>
+          <GameCard key={game.id} game={game} />
         ))}
+
       </div>
+      
     </section>
   );
 }
 
 export default HomePage;
+
+
+
+  
