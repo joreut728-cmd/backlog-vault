@@ -2,10 +2,27 @@ import GameCard from "../components/GameCard";
 import { games } from "../data/games";
 
 function HomePage() {
-  
-
   return (
     <section className="mx-auto max-w-7xl px-6 py-10">
+      {/* Hero Section */}
+      <div className="mb-20 text-center">
+        <h1 className="text-6xl font-bold">🎮 Backlog Vault</h1>
+
+        <p className="mx-auto mt-6 max-w-2xl text-xl text-slate-400">
+          Organize your gaming journey, track your backlog, rate your favorite
+          games and connect with the community.
+        </p>
+
+        <div className="mt-10 flex justify-center gap-4">
+          <button className="rounded-xl bg-violet-600 px-6 py-3 font-semibold hover:bg-violet-500">
+            Add Game
+          </button>
+
+          <button className="rounded-xl border border-slate-700 px-6 py-3 font-semibold hover:border-violet-500">
+            Browse Collection
+          </button>
+        </div>
+      </div>
       <div className="mb-10">
         <h1 className="text-5xl font-bold">Your Game Collection</h1>
 
@@ -13,7 +30,8 @@ function HomePage() {
           Manage your backlog and track your gaming journey.
         </p>
       </div>
-
+      
+      {/* GameCard Section */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {games.map((game) => (
           <GameCard key={game.id} game={game} />
