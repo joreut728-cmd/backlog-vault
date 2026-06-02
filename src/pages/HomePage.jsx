@@ -24,13 +24,13 @@ function HomePage() {
         </div>
       </div>
       <div className="mb-10">
-        <h1 className="text-5xl font-bold">Your Game Collection</h1>
+        <h2 className="text-4xl font-bold">Your Game Collection</h2>
 
         <p className="mt-3 text-slate-400">
           Manage your backlog and track your gaming journey.
         </p>
       </div>
-      
+
       {/* Features Section */}
       <div className="mb-20">
         <h2 className="mb-10 text-center text-4xl font-bold">Features</h2>
