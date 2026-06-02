@@ -31,6 +31,41 @@ function HomePage() {
         </p>
       </div>
       
+      {/* Features Section */}
+      <div className="mb-20">
+        <h2 className="mb-10 text-center text-4xl font-bold">Features</h2>
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <h3 className="mb-3 text-xl font-semibold">📚 Manage Collection</h3>
+
+            <p className="text-slate-400">
+              Organize all your games in one place.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <h3 className="mb-3 text-xl font-semibold">⭐ Rate Games</h3>
+
+            <p className="text-slate-400">Track your personal favorites.</p>
+          </div>
+
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <h3 className="mb-3 text-xl font-semibold">🎯 Track Progress</h3>
+
+            <p className="text-slate-400">
+              Keep track of what you are playing.
+            </p>
+          </div>
+
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <h3 className="mb-3 text-xl font-semibold">💬 Community</h3>
+
+            <p className="text-slate-400">Discuss games with other players.</p>
+          </div>
+        </div>
+      </div>
+
       {/* GameCard Section */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {games.map((game) => (
