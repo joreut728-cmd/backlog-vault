@@ -1,5 +1,6 @@
 import GameCard from "../components/GameCard";
 import { games } from "../data/games";
+import Button from "../components/Button";
 
 function HomePage() {
   return (
@@ -14,13 +15,9 @@ function HomePage() {
         </p>
 
         <div className="mt-10 flex justify-center gap-4">
-          <button className="rounded-xl bg-violet-600 px-6 py-3 font-semibold hover:bg-violet-500">
-            Add Game
-          </button>
+          <Button variant="primary">Add Game</Button>
 
-          <button className="rounded-xl border border-slate-700 px-6 py-3 font-semibold hover:border-violet-500">
-            Browse Collection
-          </button>
+          <Button variant="secondary">Browse Collection</Button>
         </div>
       </div>
       <div className="mb-10">
