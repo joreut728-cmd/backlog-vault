@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { games } from "../data/games";
+import StatusBadge from "../components/StatusBadge";
 
 function GameDetailPage() {
   const { id } = useParams();
@@ -29,7 +30,7 @@ function GameDetailPage() {
             <h1 className="text-5xl font-bold">{game.title}</h1>
 
             <span className="rounded-full bg-violet-500/20 px-4 py-2 text-violet-300">
-              {game.status}
+              <StatusBadge status={game.status} />
             </span>
           </div>
 
