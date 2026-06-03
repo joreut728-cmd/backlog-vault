@@ -24,7 +24,7 @@ function Navbar() {
           </Link>
 
           <Link
-            to="/add-game"
+            to="/community-page"
             className="text-slate-300 hover:text-violet-400 transition"
           >
             Community
