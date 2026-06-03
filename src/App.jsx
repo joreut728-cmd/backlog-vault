@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/game/:id" element={<GameDetailPage />} />
           <Route path="/add-game" element={<AddGamePage />} />
-          <Route path="/community-page" element={<CommunityPage />} />
+          <Route path="/community" element={<CommunityPage />} />
         </Routes>
       </main>
     </BrowserRouter>
