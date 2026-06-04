@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormInput from "../components/FormInput";
 
 function AddGamePage() {
   const [title, setTitle] = useState("");
@@ -8,6 +9,11 @@ function AddGamePage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (!title || !genre) {
+      alert("Please fill out all required fields.");
+      return;
+    }
 
     console.log({
       title,
@@ -19,56 +25,32 @@ function AddGamePage() {
 
   return (
     <section className="mx-auto max-w-3xl px-6 py-10">
-
-      <h1 className="mb-8 text-5xl font-bold">
-        Add New Game
-      </h1>
+      <h1 className="mb-8 text-5xl font-bold">Add New Game</h1>
 
       <form
         onSubmit={handleSubmit}
         className="space-y-6 rounded-2xl bg-slate-900 p-8"
       >
+        <FormInput
+          label="Title"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="Enter game title"
+        />
+
+        <FormInput
+          label="Genre"
+          value={genre}
+          onChange={(event) => setGenre(event.target.value)}
+          placeholder="Enter genre"
+        />
 
         <div>
-          <label className="mb-2 block">
-            Title
-          </label>
-
-          <input
-            type="text"
-            value={title}
-            onChange={(event) =>
-              setTitle(event.target.value)
-            }
-            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block">
-            Genre
-          </label>
-
-          <input
-            type="text"
-            value={genre}
-            onChange={(event) =>
-              setGenre(event.target.value)
-            }
-            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
-          />
-        </div>
-
-        <div>
-          <label className="mb-2 block">
-            Status
-          </label>
+          <label className="mb-2 block">Status</label>
 
           <select
             value={status}
-            onChange={(event) =>
-              setStatus(event.target.value)
-            }
+            onChange={(event) => setStatus(event.target.value)}
             className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
           >
             <option>Playing</option>
@@ -78,15 +60,11 @@ function AddGamePage() {
         </div>
 
         <div>
-          <label className="mb-2 block">
-            Description
-          </label>
+          <label className="mb-2 block">Description</label>
 
           <textarea
             value={description}
-            onChange={(event) =>
-              setDescription(event.target.value)
-            }
+            onChange={(event) => setDescription(event.target.value)}
             className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
             rows="5"
           />
@@ -98,7 +76,6 @@ function AddGamePage() {
         >
           Save Game
         </button>
-
       </form>
     </section>
   );

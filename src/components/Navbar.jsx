@@ -21,7 +21,7 @@ function Navbar() {
             to="/add-game"
             className="text-slate-300 hover:text-violet-400 transition"
           >
-            Add Game
+            AddGame
           </Link>
 
           <Link
