@@ -7,6 +7,7 @@ import AddGamePage from "./pages/AddGamePage";
 import Navbar from "./components/Navbar";
 import CommunityPage from "./pages/CommunityPage";
 import LandingPage from "./pages/LandingPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/game/:id" element={<GameDetailPage />} />
           <Route path="/add-game" element={<AddGamePage />} />
           <Route path="/community" element={<CommunityPage />} />
+           <Route path="/register" element={<RegisterPage />} />
         </Routes>
       </main>
     </BrowserRouter>
