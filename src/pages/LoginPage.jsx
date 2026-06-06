@@ -1,55 +1,93 @@
+
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LoginPage() {
-  const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    if (!email || !password) {
+      alert("Please fill out all fields.");
+      return;
+    }
+
     console.log({
-      title,
-      genre,
+      email,
+      password,
     });
   };
 
   return (
-    <section className="mx-auto max-w-3xl px-6 py-10">
-      <h1 className="mb-8 text-5xl font-bold">Login</h1>
+    <section className="mx-auto flex min-h-[80vh] max-w-md items-center px-6">
 
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-6 rounded-2xl bg-slate-900 p-8"
-      >
-        <div>
-          <label className="mb-2 block">Email</label>
+      <div className="w-full rounded-2xl border border-slate-800 bg-slate-900 p-8">
 
-          <input
-            type="text"
-            value={title}
-            onChange={(event) => setTitle(event.target.value)}
-            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
-          />
-        </div>
+        <h1 className="mb-2 text-4xl font-bold">
+          Welcome Back
+        </h1>
 
-        <div>
-          <label className="mb-2 block">Passwort</label>
+        <p className="mb-8 text-slate-400">
+          Login to access your gaming library.
+        </p>
 
-          <input
-            type="text"
-            value={genre}
-            onChange={(event) => setGenre(event.target.value)}
-            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
-          />
-        </div>
+        <form onSubmit={handleSubmit} className="space-y-6">
 
-        <button
-          type="submit"
-          className="rounded-xl cursor-pointer bg-violet-600 px-6 py-3 font-semibold hover:bg-violet-500"
-        >
-          Login
-        </button>
-      </form>
+          <div>
+            <label className="mb-2 block">
+              Email
+            </label>
+
+            <input
+              type="email"
+              value={email}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
+              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <div>
+            <label className="mb-2 block">
+              Password
+            </label>
+
+            <input
+              type="password"
+              value={password}
+              onChange={(event) =>
+                setPassword(event.target.value)
+              }
+              className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
+              placeholder="********"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full rounded-xl bg-violet-600 px-6 py-3 font-semibold hover:bg-violet-500"
+          >
+            Login
+          </button>
+
+        </form>
+
+        <p className="mt-6 text-center text-slate-400">
+          Don't have an account?{" "}
+          <Link
+            to="/register"
+            className="text-violet-400 hover:text-violet-300"
+          >
+            Register
+          </Link>
+        </p>
+
+      </div>
+
     </section>
   );
 }
