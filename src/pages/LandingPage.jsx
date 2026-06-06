@@ -29,11 +29,12 @@ function LandingPage() {
             Login
           </Link>
 
-          <button
+          <Link
+          to="/register"
             className="rounded-xl border border-slate-700 px-6 py-3 hover:border-violet-500"
           >
             Register
-          </button>
+          </Link>
 
         </div>
 
