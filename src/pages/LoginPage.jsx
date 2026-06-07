@@ -64,8 +64,8 @@ function LoginPage() {
         <p className="mt-6 text-center text-slate-400">
           Don't have an account?{" "}
           <Link
-            to="/register"
-            className="rounded-xl border border-slate-700 px-6 py-3 hover:border-violet-500"
+            to="/login"
+            className="text-violet-400 hover:text-violet-300"
           >
             Register
           </Link>
