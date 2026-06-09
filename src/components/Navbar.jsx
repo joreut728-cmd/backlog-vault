@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
-  const isLoggedIn = false;
+  const { user, logout } = useAuth();
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/95 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
@@ -12,7 +13,7 @@ function Navbar() {
 
         <div className="flex items-center gap-6">
 
-  {!isLoggedIn ? (
+  {! user ? (
     <>
       <Link
         to="/login"
@@ -44,7 +45,7 @@ function Navbar() {
         Add Game
       </Link>
 
-      <button className="rounded-xl bg-violet-600 px-5 py-2 font-semibold hover:bg-violet-500 transition">
+      <button onClick={logout} className="rounded-xl bg-violet-600 px-5 py-2 font-semibold hover:bg-violet-500 transition">
         Logout
       </button>
     </>
