@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import { useAuth } from "../context/AuthContext";
 
+
 function Navbar() {
   const { user, logout } = useAuth();
+ 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-900/95 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">

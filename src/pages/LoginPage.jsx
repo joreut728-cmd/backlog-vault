@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,10 +17,9 @@ function LoginPage() {
       return;
     }
 
-    console.log({
-      email,
-      password,
-    });
+ login(email);
+
+navigate("/home");
   };
 
   return (
@@ -64,7 +67,7 @@ function LoginPage() {
         <p className="mt-6 text-center text-slate-400">
           Don't have an account?{" "}
           <Link
-            to="/login"
+            to="/register"
             className="text-violet-400 hover:text-violet-300"
           >
             Register
