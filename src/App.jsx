@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import CommunityPage from "./pages/CommunityPage";
 import LandingPage from "./pages/LandingPage";
 import RegisterPage from "./pages/RegisterPage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -20,12 +21,25 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/" element={<LandingPage />} />
 
-          <Route path="/home" element={<HomePage />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
 
           <Route path="/game/:id" element={<GameDetailPage />} />
-          <Route path="/add-game" element={<AddGamePage />} />
+          <Route
+            path="/add-game"
+            element={
+              <ProtectedRoute>
+                <AddGamePage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/community" element={<CommunityPage />} />
-          
         </Routes>
       </main>
     </BrowserRouter>
