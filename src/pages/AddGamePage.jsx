@@ -38,12 +38,25 @@ function AddGamePage() {
           placeholder="Enter game title"
         />
 
-        <FormInput
-          label="Genre"
-          value={genre}
-          onChange={(event) => setGenre(event.target.value)}
-          placeholder="Enter genre"
-        />
+        <div>
+          <label className="mb-2 block">Genre</label>
+
+          <select
+            value={genre}
+            onChange={(event) => setGenre(event.target.value)}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
+          >
+            <option value="">Select Genre</option>
+            <option value="RPG">RPG</option>
+            <option value="Action">Action</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Shooter">Shooter</option>
+            <option value="Strategy">Strategy</option>
+            <option value="Sports">Sports</option>
+            <option value="Simulation">Simulation</option>
+            <option value="Indie">Indie</option>
+          </select>
+        </div>
 
         <div>
           <label className="mb-2 block">Status</label>
