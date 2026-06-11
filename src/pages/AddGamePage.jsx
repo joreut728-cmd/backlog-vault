@@ -6,6 +6,7 @@ function AddGamePage() {
   const [genre, setGenre] = useState("");
   const [status, setStatus] = useState("Wishlist");
   const [description, setDescription] = useState("");
+  const [rating, setRating] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,6 +20,7 @@ function AddGamePage() {
       title,
       genre,
       status,
+      rating,
       description,
     });
   };
@@ -69,6 +71,23 @@ function AddGamePage() {
             <option>Playing</option>
             <option>Completed</option>
             <option>Wishlist</option>
+          </select>
+        </div>
+
+        <div>
+          <label className="mb-2 block">Rating</label>
+
+          <select
+            value={rating}
+            onChange={(event) => setRating(event.target.value)}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
+          >
+            <option value="0">Select Rating</option>
+            <option value="1">⭐ 1</option>
+            <option value="2">⭐ 2</option>
+            <option value="3">⭐ 3</option>
+            <option value="4">⭐ 4</option>
+            <option value="5">⭐ 5</option>
           </select>
         </div>
 
