@@ -1,6 +1,12 @@
 import GameCard from "../components/GameCard";
 import { games } from "../data/games";
 import Button from "../components/Button";
+import {
+  FaGamepad,
+  FaStar,
+  FaChartLine,
+  FaUsers,
+} from "react-icons/fa";
 
 function HomePage() {
   return (
@@ -47,35 +53,41 @@ function HomePage() {
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-violet-500">
-            <h3 className="mb-3 text-xl font-semibold">📚 Manage Collection</h3>
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <FaGamepad className="mb-4 text-3xl text-violet-400" />
+
+            <h3 className="mb-3 text-xl font-semibold">Manage Collection</h3>
 
             <p className="text-slate-400">
-              Build and manage your personal gaming library.
+              Organize all your games in one place.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-violet-500">
-            <h3 className="mb-3 text-xl font-semibold">⭐ Rate Games</h3>
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <FaStar className="mb-4 text-3xl text-violet-400" />
+
+            <h3 className="mb-3 text-xl font-semibold">Rate Games</h3>
+
+            <p className="text-slate-400">Track your personal favorites.</p>
+          </div>
+
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <FaChartLine className="mb-4 text-3xl text-violet-400" />
+
+            <h3 className="mb-3 text-xl font-semibold">Track Progress</h3>
 
             <p className="text-slate-400">
-              Rate games and keep track of your top picks.
+              Keep track of what you are playing.
             </p>
           </div>
 
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-violet-500">
-            <h3 className="mb-3 text-xl font-semibold">🎯 Track Progress</h3>
+          <div className="rounded-2xl bg-slate-900 p-6">
+            <FaUsers className="mb-4 text-3xl text-violet-400" />
+
+            <h3 className="mb-3 text-xl font-semibold">Community</h3>
 
             <p className="text-slate-400">
-              Monitor your gaming progress and backlog.
-            </p>
-          </div>
-
-          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:-translate-y-1 hover:border-violet-500">
-            <h3 className="mb-3 text-xl font-semibold">💬 Community</h3>
-
-            <p className="text-slate-400">
-              Join discussions and share experiences with other gamers.
+              Planned future feature for player discussions.
             </p>
           </div>
         </div>
