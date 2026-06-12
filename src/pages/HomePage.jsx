@@ -1,14 +1,17 @@
+import { useState, useEffect } from "react";
 import GameCard from "../components/GameCard";
-import { games } from "../data/games";
+
 import Button from "../components/Button";
-import {
-  FaGamepad,
-  FaStar,
-  FaChartLine,
-  FaUsers,
-} from "react-icons/fa";
+import { FaGamepad, FaStar, FaChartLine, FaUsers } from "react-icons/fa";
 
 function HomePage() {
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    const storedGames = JSON.parse(localStorage.getItem("games")) || [];
+    setGames(storedGames);
+  }, []);
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-10">
       {/* Hero Section */}
