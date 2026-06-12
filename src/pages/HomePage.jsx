@@ -7,10 +7,19 @@ import { FaGamepad, FaStar, FaChartLine, FaUsers } from "react-icons/fa";
 import { db } from "../data/firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
+import { doc, deleteDoc } from "firebase/firestore";
 
 function HomePage() {
   const [games, setGames] = useState([]);
   const { user } = useAuth();
+
+  const deleteGame = async (gameId) => {
+    try {
+      await deleteDoc(doc(db, "users", user.uid, "games", gameId));
+    } catch (error) {
+      console.error("Error deleting game:", error);
+    }
+  };
 
   useEffect(() => {
     if (!user) return;
@@ -121,7 +130,7 @@ function HomePage() {
       {/* GameCard Section */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {games.map((game) => (
-          <GameCard key={game.id} game={game} />
+          <GameCard key={game.id} game={game} onDelete={deleteGame} />
         ))}
       </div>
     </section>
