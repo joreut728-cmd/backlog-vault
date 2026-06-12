@@ -4,8 +4,30 @@ import GameCard from "../components/GameCard";
 import Button from "../components/Button";
 import { FaGamepad, FaStar, FaChartLine, FaUsers } from "react-icons/fa";
 
+import { db } from "../data/firebase";
+import { collection, onSnapshot } from "firebase/firestore";
+import { useAuth } from "../context/AuthContext";
+
 function HomePage() {
   const [games, setGames] = useState([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (!user) return;
+
+    const ref = collection(db, "users", user.uid, "games");
+
+    const unsubscribe = onSnapshot(ref, (snapshot) => {
+      setGames(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })),
+      );
+    });
+
+    return () => unsubscribe();
+  }, [user]);
 
   useEffect(() => {
     const storedGames = JSON.parse(localStorage.getItem("games")) || [];
