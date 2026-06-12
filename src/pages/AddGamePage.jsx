@@ -1,7 +1,6 @@
 import { useState } from "react";
 import FormInput from "../components/FormInput";
 
-
 function AddGamePage() {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
@@ -9,6 +8,7 @@ function AddGamePage() {
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState(0);
   const [coverImage, setCoverImage] = useState("");
+  const [releaseYear, setReleaseYear] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,14 +18,18 @@ function AddGamePage() {
       return;
     }
 
-    console.log({
+    const newGame ={
+      id: Date.now(),
       title,
       genre,
       status,
       rating,
+      releaseYear,
       coverImage,
       description,
-    });
+    };
+    console.log(newGame);
+    alert("Game successfully added");
   };
 
   return (
@@ -103,6 +107,18 @@ function AddGamePage() {
             onChange={(event) => setCoverImage(event.target.value)}
             className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
             placeholder="https://..."
+          />
+        </div>
+
+        <div>
+          <label className="mb-2 block">Release Year</label>
+
+          <input
+            type="number"
+            value={releaseYear}
+            onChange={(event) => setReleaseYear(event.target.value)}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
+            placeholder="2025"
           />
         </div>
 
