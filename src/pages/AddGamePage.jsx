@@ -18,7 +18,7 @@ function AddGamePage() {
       return;
     }
 
-    const newGame ={
+    const newGame = {
       id: Date.now(),
       title,
       genre,
@@ -28,7 +28,14 @@ function AddGamePage() {
       coverImage,
       description,
     };
-    console.log(newGame);
+
+    const existingGames = JSON.parse(localStorage.getItem("games")) || [];
+
+    existingGames.push(newGame);
+
+    localStorage.setItem("games", JSON.stringify(existingGames));
+
+    console.log(existingGames);
     alert("Game successfully added");
   };
 
