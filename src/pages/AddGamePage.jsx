@@ -1,12 +1,14 @@
 import { useState } from "react";
 import FormInput from "../components/FormInput";
 
+
 function AddGamePage() {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState("");
   const [status, setStatus] = useState("Wishlist");
   const [description, setDescription] = useState("");
   const [rating, setRating] = useState(0);
+  const [coverImage, setCoverImage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,6 +23,7 @@ function AddGamePage() {
       genre,
       status,
       rating,
+      coverImage,
       description,
     });
   };
@@ -84,11 +87,23 @@ function AddGamePage() {
           >
             <option value="0">Select Rating</option>
             <option value="1">⭐ 1</option>
-            <option value="2">⭐ 2</option>
-            <option value="3">⭐ 3</option>
-            <option value="4">⭐ 4</option>
-            <option value="5">⭐ 5</option>
+            <option value="2">⭐ ⭐ 2</option>
+            <option value="3">⭐ ⭐ ⭐ 3</option>
+            <option value="4">⭐ ⭐ ⭐ ⭐ 4</option>
+            <option value="5">⭐ ⭐ ⭐ ⭐ ⭐ 5</option>
           </select>
+        </div>
+
+        <div>
+          <label className="mb-2 block">Cover Image URL</label>
+
+          <input
+            type="text"
+            value={coverImage}
+            onChange={(event) => setCoverImage(event.target.value)}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
+            placeholder="https://..."
+          />
         </div>
 
         <div>
