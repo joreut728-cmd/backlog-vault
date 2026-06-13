@@ -9,7 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!email || !password) {
@@ -17,9 +17,14 @@ function LoginPage() {
       return;
     }
 
- login(email);
+    try {
+      await login(email, password);
 
-navigate("/home");
+      navigate("/home");
+    } catch (error) {
+      console.error(error);
+      alert(error.message);
+    }
   };
 
   return (

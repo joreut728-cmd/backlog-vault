@@ -8,10 +8,12 @@ import { db } from "../data/firebase";
 import { collection, onSnapshot } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
 import { doc, deleteDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
   const [games, setGames] = useState([]);
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const deleteGame = async (gameId) => {
     try {
@@ -38,11 +40,6 @@ function HomePage() {
     return () => unsubscribe();
   }, [user]);
 
-  useEffect(() => {
-    const storedGames = JSON.parse(localStorage.getItem("games")) || [];
-    setGames(storedGames);
-  }, []);
-
   return (
     <section className="mx-auto max-w-7xl px-6 py-10">
       {/* Hero Section */}
@@ -63,12 +60,23 @@ function HomePage() {
         </p>
 
         <div className="mt-10 flex justify-center gap-4">
-          <Button variant="primary">Add Game</Button>
+          <Button variant="primary" onClick={() => navigate("/add-game")}>
+            Add Game
+          </Button>
 
-          <Button variant="secondary">Explore Collection</Button>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              document
+                .getElementById("game-collection")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Explore Collection
+          </Button>
         </div>
       </div>
-      <div className="mb-10">
+      <div id="game-collection" className="mb-10">
         <h2 className="text-4xl font-bold">Your Game Collection</h2>
 
         <p className="mt-3 text-slate-400">
