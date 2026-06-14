@@ -3,6 +3,7 @@ import FormInput from "../components/FormInput";
 import { db } from "../data/firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function AddGamePage() {
   const [title, setTitle] = useState("");
@@ -12,8 +13,10 @@ function AddGamePage() {
   const [rating, setRating] = useState(0);
   const [coverImage, setCoverImage] = useState("");
   const [releaseYear, setReleaseYear] = useState("");
+  
 
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -35,6 +38,8 @@ function AddGamePage() {
     });
 
     alert("Game saved to Firebase!");
+
+    navigate("/home");
   };
 
 
