@@ -7,13 +7,13 @@ function GameCard({ game, onDelete }) {
 
      
       <Link to={`/game/${game.id}`}>
-        {game.cover && (
-          <img
-            src={game.cover}
-            alt={game.title}
-            className="mb-4 h-48 w-full rounded-xl object-cover"
-          />
-        )}
+        {game.coverImage && (
+  <img
+    src={game.coverImage}
+    alt={game.title}
+    className="mb-4 h-48 w-full rounded-xl object-cover"
+  />
+)}
 
         <h2 className="text-2xl font-semibold">{game.title}</h2>
 
