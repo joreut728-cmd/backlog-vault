@@ -27,7 +27,7 @@ function GameCard({ game, onDelete }) {
       
       <button
         onClick={() => onDelete(game.id)}
-        className="mt-4 rounded bg-red-600 px-3 py-1 text-white hover:bg-red-500"
+        className="mt-4 rounded bg-violet-800  px-3 py-1 text-white hover:bg-violet-400"
       >
         Delete
       </button>

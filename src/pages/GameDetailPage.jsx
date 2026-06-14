@@ -1,29 +1,54 @@
 import { Link, useParams } from "react-router-dom";
-import { games } from "../data/games";
+
 import StatusBadge from "../components/StatusBadge";
+import { useEffect, useState } from "react";
+import { db } from "../data/firebase";
+import { doc, getDoc } from "firebase/firestore";
+import { useAuth } from "../context/AuthContext";
 
 function GameDetailPage() {
   const { id } = useParams();
+  const { user } = useAuth();
+  const [game, setGame] = useState(null);
 
-  
+  useEffect(() => {
+    const loadGame = async () => {
+      if (!user) return;
 
-  const game = games.find((game) => game.id === Number(id));
+      const gameRef = doc(db, "users", user.uid, "games", id);
+
+      const gameSnap = await getDoc(gameRef);
+
+      if (gameSnap.exists()) {
+        setGame({
+          id: gameSnap.id,
+          ...gameSnap.data(),
+        });
+      }
+    };
+
+    loadGame();
+  }, [id, user]);
 
   if (!game) {
-    return <div className="p-10 text-2xl">Game not found</div>;
+    return <div className="p-10 text-2xl">Loading...</div>;
   }
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-10">
       <Link
-        to="/"
+        to="/home"
         className="mb-8 inline-block text-violet-400 hover:text-violet-300"
       >
-        ← Back
+        ← Back to Collection
       </Link>
 
       <div className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 shadow-xl">
-        <div className="h-80 bg-slate-800"></div>
+        <img
+          src={game.coverImage}
+          alt={game.title}
+          className="h-80 w-full object-cover"
+        />
 
         <div className="p-8">
           <div className="flex items-center justify-between">
