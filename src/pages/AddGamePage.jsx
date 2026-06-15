@@ -77,7 +77,7 @@ function AddGamePage() {
         </button>
       </div>
 
-      <div className="mt-4 max-h-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900">
+      <div className="mt-4 mb-8 max-h-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900">
         {searchResults.slice(0, 10).map((game) => (
           <button
             key={game.id}
@@ -111,7 +111,7 @@ function AddGamePage() {
 
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 rounded-2xl bg-slate-900 p-8"
+        className="mt-4 space-y-6 rounded-2xl bg-slate-900 p-8"
       >
         <FormInput
           label="Title"
