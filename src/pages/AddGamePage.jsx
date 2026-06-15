@@ -24,9 +24,11 @@ function AddGamePage() {
 
     const data = await response.json();
 
-    console.log(data);
+    const filteredGames = data.filter((game) =>
+      game.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
 
-    setSearchResults(data);
+    setSearchResults(filteredGames);
   };
 
   const handleSubmit = async (event) => {
@@ -75,30 +77,34 @@ function AddGamePage() {
         </button>
       </div>
 
-      <div className="mt-4 space-y-2">
+      <div className="mt-4 max-h-80 overflow-y-auto rounded-xl border border-slate-700 bg-slate-900">
         {searchResults.slice(0, 10).map((game) => (
           <button
             key={game.id}
             type="button"
-            className="block w-full rounded-lg bg-slate-800 p-3 text-left hover:bg-slate-700"
+            className="flex w-full items-center gap-4 border-b border-slate-800 p-3 text-left hover:bg-slate-800"
             onClick={() => {
               setTitle(game.title);
               setGenre(game.genre);
               setCoverImage(game.thumbnail);
-              {coverImage && (
-  <img
-    src={coverImage}
-    alt={title}
-    className="mt-4 h-48 rounded-xl object-cover"
-  />
-)}
 
               if (game.release_date) {
                 setReleaseYear(game.release_date.split("-")[0]);
               }
+
+              setSearchResults([]);
             }}
           >
-            {game.title}
+            <img
+              src={game.thumbnail}
+              alt={game.title}
+              className="h-16 w-24 rounded object-cover"
+            />
+
+            <div>
+              <p className="font-semibold">{game.title}</p>
+              <p className="text-sm text-slate-400">{game.genre}</p>
+            </div>
           </button>
         ))}
       </div>
@@ -158,10 +164,10 @@ function AddGamePage() {
           >
             <option value="0">Select Rating</option>
             <option value="1">⭐ 1</option>
-            <option value="2">⭐ ⭐ 2</option>
-            <option value="3">⭐ ⭐ ⭐ 3</option>
-            <option value="4">⭐ ⭐ ⭐ ⭐ 4</option>
-            <option value="5">⭐ ⭐ ⭐ ⭐ ⭐ 5</option>
+            <option value="2">⭐ 2</option>
+            <option value="3">⭐ 3</option>
+            <option value="4">⭐ 4</option>
+            <option value="5">⭐ 5</option>
           </select>
         </div>
 
@@ -175,6 +181,14 @@ function AddGamePage() {
             className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
             placeholder="https://..."
           />
+
+          {coverImage && (
+            <img
+              src={coverImage}
+              alt={title}
+              className="mt-4 h-48 rounded-xl object-cover"
+            />
+          )}
         </div>
 
         <div>
