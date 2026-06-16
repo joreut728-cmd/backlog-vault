@@ -148,10 +148,11 @@ function AddGamePage() {
             onChange={(event) => setStatus(event.target.value)}
             className="w-full rounded-xl border border-slate-700 bg-slate-800 p-3"
           >
-            <option>Playing</option>
-            <option>Completed</option>
-            <option>Wishlist</option>
+            <option value="Playing">Playing</option>
+            <option value="Completed">Completed</option>
+            <option value="Wishlist">Wishlist</option>
           </select>
+          <p className="text-green-400 mt-2">Aktueller Status: {status}</p>
         </div>
 
         <div>
