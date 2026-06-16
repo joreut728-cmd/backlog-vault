@@ -16,22 +16,6 @@ function LandingPage() {
           Track your backlog, rate your favorite games and organize your entire
           gaming collection in one place.
         </p>
-
-        <div className="mt-10 flex justify-center gap-4">
-          <Link
-            to="/login"
-            className="rounded-xl bg-violet-600 px-6 py-3 font-semibold hover:bg-violet-500"
-          >
-            Login
-          </Link>
-
-          <Link
-            to="/register"
-            className="rounded-xl border border-slate-700 px-6 py-3 hover:border-violet-500"
-          >
-            Register
-          </Link>
-        </div>
       </div>
 
       {/* Features */}

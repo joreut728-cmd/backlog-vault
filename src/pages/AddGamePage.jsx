@@ -152,7 +152,6 @@ function AddGamePage() {
             <option value="Completed">Completed</option>
             <option value="Wishlist">Wishlist</option>
           </select>
-          <p className="text-green-400 mt-2">Aktueller Status: {status}</p>
         </div>
 
         <div>
